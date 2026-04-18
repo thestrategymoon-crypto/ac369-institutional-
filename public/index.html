@@ -1291,7 +1291,7 @@ async function loadCombined(){
     <div class="card" style="background:rgba(0,0,0,.4)">
       <div class="sh">🏛️ Institutional Decision Framework</div>
       ${[
-        {step:'1',title:'Check Master Score',desc:`Score ${masterScore}/100. ${masterScore>=70?'✅ Kondusif — proceed to step 2':masterScore>=50?'⚠️ Mixed — be selective':❌ Score terlalu rendah — hold cash'}.`},
+        {step:'1',title:'Check Master Score',desc:`Score ${masterScore}/100. ${masterScore>=70?'✅ Kondusif — proceed to step 2':masterScore>=50?'⚠️ Mixed — be selective':'❌ Score terlalu rendah — hold cash'}.`},
         {step:'2',title:'Verify TA Confluence',desc:'Buka Scanner PRO di app utama. Filter setup dengan 6+ faktor. Hanya ambil Grade A (78%+).'},
         {step:'3',title:'Check Liquidation Map',desc:'Pastikan entry tidak tepat di bawah major long liquidation cluster. Tunggu sweep jika dekat.'},
         {step:'4',title:'CVD Confirmation',desc:'CVD harus confirming direction: price up + CVD up (valid), atau bullish divergence (accumulation).'},
