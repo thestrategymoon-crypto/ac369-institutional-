@@ -152,6 +152,10 @@ select{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);b
 
 </div>
 <script>
+// Safari compatibility test
+window.AC369_LOADED = true;
+console.log('AC369 Institutional Suite loaded successfully');
+
 // ═══ NAVIGATION ═══════════════════════════════════
 function T(t) {
   document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});
@@ -183,7 +187,7 @@ async function bFetch(path, params) {
   params = params || {};
   var p = Object.assign({path: path}, params);
   var qs = new URLSearchParams(p).toString();
-  var res = await fetch('/api/binance?' + qs, {signal: AbortSignal.timeout(12000)});
+  var res = await fetch('/api/binance?' + qs);
   if(!res.ok) throw new Error('Binance API error ' + res.status);
   return res.json();
 }
@@ -192,7 +196,7 @@ async function fFetch(endpoint, params) {
   try {
     var p = Object.assign({endpoint: endpoint}, params);
     var qs = new URLSearchParams(p).toString();
-    var res = await fetch('/api/futures?' + qs, {signal: AbortSignal.timeout(9000)});
+    var res = await fetch('/api/futures?' + qs);
     if(!res.ok) return null;
     return res.json();
   } catch(e) { return null; }
@@ -201,7 +205,7 @@ async function dFetch(source, params) {
   params = params || {};
   var p = Object.assign({source: source}, params);
   var qs = new URLSearchParams(p).toString();
-  var res = await fetch('/api/data?' + qs, {signal: AbortSignal.timeout(12000)});
+  var res = await fetch('/api/data?' + qs);
   if(!res.ok) throw new Error('Data API error ' + res.status);
   return res.json();
 }
@@ -1128,6 +1132,11 @@ function guideHtml(items) {
       + '</div>';
   }).join('');
 }
+
+// Verify all functions loaded
+window.addEventListener('load', function() {
+  console.log('Functions available:', typeof runLiq, typeof runCVD, typeof runFG, typeof runSent, typeof runComb);
+});
 </script>
 </body>
 </html>
